@@ -1,0 +1,61 @@
+<!-- app.component.html -->
+<div class="ai-container">
+  <div class="header-container">
+  <h1 class="header-title">Multi AI</h1>
+  <div class="right-section">
+      <div class="toggle-theme">
+        <button (click)="toggleTheme()" class="theme-toggle rounded-full">
+          {{ isDarkTheme ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+        </button>
+      </div>
+      <div class="auth-buttons ">
+        <button class="signup-button rounded-full" (click)="signup()">Sign Up</button>
+        <button class="signin-button rounded-full" (click)="signin()">Sign In</button>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="search-container">
+      <div class="input-row">
+            <textarea [(ngModel)]="prompt" class="input-prompt" placeholder="Enter your text here"></textarea>
+            
+      </div>
+
+      <div class="button-row">
+        <button class="attach-button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 9V15C10 16.1046 10.8954 17 12 17V17C13.1046 17 14 16.1046 14 15V7C14 4.79086 12.2091 3 10 3V3C7.79086 3 6 4.79086 6 7V15C6 18.3137 8.68629 21 12 21V21C15.3137 21 18 18.3137 18 15V8" stroke="currentColor"></path>
+          </svg>
+        </button>
+        <button class="deepsearch">DeepSearch</button>
+        <button class="think">Think</button>
+
+      <!-- Dropdown 1: AI Model Selection 1-->
+      <select class="dropdown rounded-full" [(ngModel)]="selectedModel">
+        <option *ngFor="let model of aiModels" [value]="model" class="option-text">{{ model }}</option>
+      </select>
+
+      <!-- Dropdown 2: AI Model Selection 2 -->
+      <select class="dropdown rounded-full" [(ngModel)]="selectedModel2">
+        <option *ngFor="let feature of aiModels2" [value]="feature" class="option-text">{{ feature }}</option>
+      </select>
+
+      <!-- Dropdown 3: AI Model Selection 3-->
+      <select class="dropdown rounded-full" [(ngModel)]="selectedModel3">
+        <option *ngFor="let theme of aiModels3" [value]="theme" class="option-text">{{ theme }}</option>
+      </select>
+      <div class="buttons">
+        <button class="c-button" (click)="ccompleteText()">
+          &#x2191; <!-- Unicode for an upward arrow -->
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <div *ngIf="completedText" class="result">
+      <h2>Completed Text:</h2>
+      <p>{{ completedText }}</p>
+    </div>
+</div>
+  
