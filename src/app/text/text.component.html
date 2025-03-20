@@ -14,12 +14,28 @@
       </div>
     </div>
   </div>
-
+    <div class="chat-container" data-chat-active="false" style="display: none;">
+      <div class="chat-bubble">
+        <div class="ai-response">
+          <h3>OpenAI</h3>
+          <p>This is OpenAI’s response. It provides insightful and creative text generation.</p>
+        </div>
+        
+        <div class="ai-response">
+          <h3>Claude 3</h3>
+          <p>Claude 3’s response is known for its contextual understanding and nuanced replies.</p>
+        </div>
+      
+        <div class="ai-response">
+          <h3>Gemini 1.5</h3>
+          <p>Gemini 1.5 delivers responses optimized for speed and accuracy.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="search-container">
       <div class="input-row">
             <textarea [(ngModel)]="prompt" class="input-prompt" placeholder="Enter your text here"></textarea>
-            
       </div>
 
       <div class="button-row">
@@ -46,8 +62,8 @@
         <option *ngFor="let theme of aiModels3" [value]="theme" class="option-text">{{ theme }}</option>
       </select>
       <div class="buttons">
-        <button class="c-button" (click)="ccompleteText()">
-          &#x2191; <!-- Unicode for an upward arrow -->
+        <button class="c-button" (click)="ccompleteText()" [disabled]="!prompt || prompt.trim() === ''">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="stroke-[2] relative"><path d="M5 11L12 4M12 4L19 11M12 4V21" stroke="currentColor"></path></svg>
         </button>
       </div>
       </div>

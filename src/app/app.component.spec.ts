@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-openai-demo'`, () => {
+  it(`should have as title 'openai-multi'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-openai-demo');
+    expect(app.title).toEqual('openai-multi');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-openai-demo app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('openai-multi app is running!');
   });
 });

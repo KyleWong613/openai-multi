@@ -40,14 +40,14 @@ export class TextComponent {
       max_tokens: 50 // Adjust as needed
     };
   
-    const endpoint = 'https://api.openai.com/v1/completions'; // api endpoint 
+    // const endpoint = 'https://api.openai.com/v1/completions'; // api endpoint 
 
-    this.http.post<any>(endpoint, data, { headers })
-      .subscribe(response => {
-        this.completedText = response.choices[0].text;
-      }, error => {
-        console.error('API Error:', error);
-      });
+    // this.http.post<any>(endpoint, data, { headers })
+    //   .subscribe(response => {
+    //     this.completedText = response.choices[0].text;
+    //   }, error => {
+    //     console.error('API Error:', error);
+    // });
   }
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
