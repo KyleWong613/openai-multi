@@ -14,21 +14,20 @@
       </div>
     </div>
   </div>
-    <div class="chat-container" data-chat-active="false" style="display: none;">
-      <div class="chat-bubble">
+    <div class="chat-container d-none" data-chat-active="false">
+      <div class="chat-bubble d-none">
         <div class="ai-response">
-          <h3>OpenAI</h3>
-          <p>This is OpenAI’s response. It provides insightful and creative text generation.</p>
+          <h3>{{ selectedModel }}</h3>
+          <p>This is {{ selectedModel }}’s response. It provides insightful and creative text generation.</p>
+        </div>
+        <div class="ai-response">
+          <h3>{{ selectedModel2 }}</h3>
+          <p>{{ selectedModel2 }}’s response is known for its contextual understanding and nuanced replies.</p>
         </div>
         
         <div class="ai-response">
-          <h3>Claude 3</h3>
-          <p>Claude 3’s response is known for its contextual understanding and nuanced replies.</p>
-        </div>
-      
-        <div class="ai-response">
-          <h3>Gemini 1.5</h3>
-          <p>Gemini 1.5 delivers responses optimized for speed and accuracy.</p>
+          <h3>{{ selectedModel3 }}</h3>
+          <p>{{ selectedModel3 }} delivers responses optimized for speed and accuracy.</p>
         </div>
       </div>
     </div>
@@ -40,13 +39,23 @@
 
       <div class="button-row">
         <button class="attach-button">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 9V15C10 16.1046 10.8954 17 12 17V17C13.1046 17 14 16.1046 14 15V7C14 4.79086 12.2091 3 10 3V3C7.79086 3 6 4.79086 6 7V15C6 18.3137 8.68629 21 12 21V21C15.3137 21 18 18.3137 18 15V8" stroke="currentColor"></path>
-          </svg>
+          <div class="upload-container">
+            <label for="file-upload" class="upload-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 9V15C10 16.1046 10.8954 17 12 17V17C13.1046 17 14 16.1046 14 15V7C14 4.79086 12.2091 3 10 3V3C7.79086 3 6 4.79086 6 7V15C6 18.3137 8.68629 21 12 21V21C15.3137 21 18 18.3137 18 15V8" stroke="currentColor"></path>
+              </svg>
+            </label>
+            <input type="file" id="file-upload" style="display: none;" />
+          </div>
+          
         </button>
-        <button class="deepsearch">DeepSearch</button>
-        <button class="think">Think</button>
+        <!-- <button class="deepsearch">DeepSearch</button>
+        <button class="think">Think</button> -->
+        
 
+      <select class="mode-select dropdown rounded-full" [(ngModel)]="selectedMode">
+        <option *ngFor="let mode of aiModes" [value]="mode" class="mode-text">{{ mode }}</option>
+      </select>
       <!-- Dropdown 1: AI Model Selection 1-->
       <select class="dropdown rounded-full" [(ngModel)]="selectedModel">
         <option *ngFor="let model of aiModels" [value]="model" class="option-text">{{ model }}</option>

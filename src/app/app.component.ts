@@ -19,9 +19,11 @@ export class AppComponent implements AfterViewInit {
       let containerHeight = $(".ai-container").outerHeight() || 0; // Ensure it's not undefined
       let newTop = windowHeight - containerHeight - 30; // Position it above by 30px
       let chatContainer = $(".chat-container");
+      let chatBubble = $(".chat-bubble");
       let container = $(".ai-container");
       if (this.isChat) return; // Prevent multiple animations
-      chatContainer.attr("data-chat-active", "true").fadeIn(); // Show chat container
+      chatContainer.removeClass("d-none").attr("data-chat-active", "true").fadeIn();
+      chatBubble.removeClass("d-none");
       this.isChat = true; // Mark as moved after animation completes
 
 

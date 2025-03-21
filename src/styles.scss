@@ -91,6 +91,10 @@ app-text,
   align-items: center; /* Aligns buttons vertically */
   margin-left: 0; /* Ensures it starts from the left */
 }
+.d-none
+{
+  display: none !important;
+}
 .button-row button,
 .button-row select {
   margin: 0; /* Removes extra margin */
@@ -293,7 +297,15 @@ button:hover {
   justify-content: space-between; /* Space between columns */
   gap: 20px; /* Space between items */
   margin-bottom: 20px; /* Add space below the chat bubble */
-
+}
+.chat-image{
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 10px 0;
+  max-width: 40%; /* Makes it smaller */
+  text-align: left;
+  font-size: 14px;
 }
 
 .ai-response {
@@ -305,6 +317,9 @@ button:hover {
   background-color: var(--container-bg);
   border-color: var(--container-bg);
   color: var(--text-color);
+}
+.user-message {
+  align-self: flex-end;
 }
 .result {
   margin-top: 20px;

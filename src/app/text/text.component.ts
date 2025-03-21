@@ -19,12 +19,36 @@ export class TextComponent {
   aiModels2 = ['Open AI','Grok 3', 'Grok 2', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Add AI model options
   selectedModel3 = 'Grok 3'; // Default selection
   aiModels3 = ['Open AI','Grok 3', 'Grok 2', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Add AI model options
+  aiModes = ['Chat', 'Generate Image', 'Generate Video'];
+  selectedMode = 'Chat'; 
 
   ngOnInit() {
     // Example jQuery usage: Change background on load
     $(document).ready(() => {
-      console.log('jQuery is working!');
       $('.ai-container').css('border', '2px solid #007bff'); // Add a border to ai-container
+      $(".attach-button").on("click", function () {
+        $("#file-upload").click();
+      });
+    
+      $("#file-upload").on("change", function (event) {
+        let input = event.target as HTMLInputElement; // Cast to input element
+        if (input.files && input.files.length > 0) {
+          let fileName = input.files[0].name;
+          let chatBubble = `
+            <div class="chat-image user-message">
+              <div class="ai-response">
+                <p>${fileName}</p>
+              </div>
+            </div>
+          `;
+          let chatContainer = $(".chat-container");
+          chatContainer.removeClass("d-none").attr("data-chat-active", "true").fadeIn();
+          // Append the chat bubble to the chat container
+          chatContainer.append(chatBubble);
+          
+          console.log("Selected file:", fileName);
+        }
+      });
     });
   }
   
