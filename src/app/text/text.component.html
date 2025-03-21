@@ -49,27 +49,29 @@
           </div>
           
         </button>
+        <div class="disGrok">
         <!-- <button class="deepsearch">DeepSearch</button>
         <button class="think">Think</button> -->
-        
+        </div>
 
-      <select class="mode-select dropdown rounded-full" [(ngModel)]="selectedMode">
+      <!-- <select class="mode-select dropdown rounded-full" [(ngModel)]="selectedMode">
         <option *ngFor="let mode of aiModes" [value]="mode" class="mode-text">{{ mode }}</option>
-      </select>
+      </select> -->
       <!-- Dropdown 1: AI Model Selection 1-->
-      <select class="dropdown rounded-full" [(ngModel)]="selectedModel">
+      <select class="dropdown rounded-full selectedModel1 " [(ngModel)]="selectedModel">
         <option *ngFor="let model of aiModels" [value]="model" class="option-text">{{ model }}</option>
       </select>
 
       <!-- Dropdown 2: AI Model Selection 2 -->
-      <select class="dropdown rounded-full" [(ngModel)]="selectedModel2">
+      <select class="dropdown rounded-full selectedModel2" [(ngModel)]="selectedModel2">
         <option *ngFor="let feature of aiModels2" [value]="feature" class="option-text">{{ feature }}</option>
       </select>
 
       <!-- Dropdown 3: AI Model Selection 3-->
-      <select class="dropdown rounded-full" [(ngModel)]="selectedModel3">
+      <select class="dropdown rounded-full selectedModel3" [(ngModel)]="selectedModel3">
         <option *ngFor="let theme of aiModels3" [value]="theme" class="option-text">{{ theme }}</option>
       </select>
+
       <div class="buttons">
         <button class="c-button" (click)="ccompleteText()" [disabled]="!prompt || prompt.trim() === ''">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="stroke-[2] relative"><path d="M5 11L12 4M12 4L19 11M12 4V21" stroke="currentColor"></path></svg>

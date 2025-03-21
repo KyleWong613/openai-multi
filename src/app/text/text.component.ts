@@ -13,12 +13,15 @@ export class TextComponent {
 
   constructor(private http: HttpClient) {}
   isDarkTheme = false;
-  selectedModel = 'Open AI'; // Default selection
-  aiModels = ['Open AI','Grok 3', 'Grok 2', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Add AI model options
-  selectedModel2 = 'Gemini 1.5'; // Default selection
-  aiModels2 = ['Open AI','Grok 3', 'Grok 2', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Add AI model options
-  selectedModel3 = 'Grok 3'; // Default selection
-  aiModels3 = ['Open AI','Grok 3', 'Grok 2', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Add AI model options
+  selectedModel = 'Select model'; // Default selection
+  aiModels = ['Select model','Open AI', 'Grok 3', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Updated AI model options
+  selectedModel2 = 'Select model'; // No default selection
+  aiModels2 = ['Select model', 'Open AI', 'Grok 3', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Updated AI model options
+  selectedModel3 = 'Select model'; // No default selection
+  aiModels3 = ['Select model', 'Open AI', 'Grok 3', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Updated AI model options
+  
+
+  
   aiModes = ['Chat', 'Generate Image', 'Generate Video'];
   selectedMode = 'Chat'; 
 
@@ -49,6 +52,23 @@ export class TextComponent {
           console.log("Selected file:", fileName);
         }
       });
+
+          $('.selectedModel1').on('change', function() { 
+            if ($(this).val() !== 'Select model') {
+                $('.selectedModel2').css('display', 'block');
+            } else {
+                $('.selectedModel2').css('display', 'none');
+            }
+          });
+          $('.selectedModel2').on('change', function() { 
+            if ($(this).val() !== 'Select model') {
+              $('.selectedModel3').css('display', 'block');
+          } else {
+              $('.selectedModel3').css('display', 'none');
+          }
+        });
+    
+    
     });
   }
   

@@ -127,6 +127,14 @@ button {
   z-index: 10; /* Increase if necessary */
   color: var(--text-color);
 }
+.selectedModel2
+{
+  display: none;
+}
+.selectedModel3
+{
+  display: none;
+}
 .option-text {
   border: none;
   background-color: var(--container-bg);
