@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-text',
@@ -11,7 +12,7 @@ export class TextComponent {
   completedText: string = '';
   apiKey: string = ''; // Replace with your OpenAI API key
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   isDarkTheme = false;
   selectedModel = 'Select model'; // Default selection
   aiModels = ['Select model','Open AI', 'Grok 3', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Updated AI model options
@@ -53,21 +54,20 @@ export class TextComponent {
         }
       });
 
-          $('.selectedModel1').on('change', function() { 
-            if ($(this).val() !== 'Select model') {
-                $('.selectedModel2').css('display', 'block');
-            } else {
-                $('.selectedModel2').css('display', 'none');
-            }
-          });
-          $('.selectedModel2').on('change', function() { 
-            if ($(this).val() !== 'Select model') {
-              $('.selectedModel3').css('display', 'block');
-          } else {
-              $('.selectedModel3').css('display', 'none');
-          }
-        });
-    
+      $('.selectedModel1').on('change', function() { 
+        if ($(this).val() !== 'Select model') {
+            $('.selectedModel2').css('display', 'block');
+        } else {
+            $('.selectedModel2').css('display', 'none');
+        }
+      });
+      $('.selectedModel2').on('change', function() { 
+        if ($(this).val() !== 'Select model') {
+          $('.selectedModel3').css('display', 'block');
+      } else {
+          $('.selectedModel3').css('display', 'none');
+      }
+      });
     
     });
   }
@@ -100,10 +100,12 @@ export class TextComponent {
   }
   signup()
   {
-    alert("You have successfully signed up");
+    console.log("You have successfully signed up");
+    this.router.navigate(['/signup']); // Redirect to Signup component
+
   }
   signin()
   {
-    alert("You have successfully signed in");
+    console.log("You have successfully signed in");
   }
 }
