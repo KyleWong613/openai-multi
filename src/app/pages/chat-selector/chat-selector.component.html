@@ -1,0 +1,45 @@
+<div class="chat-selector">
+    <h2>Pick Your Prefer AI Engine You (Max 3)</h2>
+  
+    <div class="grid-container">
+      <!-- Selected Models Section -->
+      <div class="selected-group">
+        <div class="selected-column">
+          <div class="selected-item" *ngFor="let selected of selectedModels; let i = index">
+            ✔ <strong>{{ selected.name }}</strong>
+            <div *ngIf="selected.subOptions">
+              <div class="sub-options" *ngFor="let sub of selected.subOptions">✔ {{ sub }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="selected-column">
+          <div class="selected-item" *ngFor="let selected of selectedModelsRight; let i = index">
+            ✔ <strong>{{ selected.name }}</strong>
+            <div *ngIf="selected.subOptions">
+              <div class="sub-options" *ngFor="let sub of selected.subOptions">✔ {{ sub }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- AI Model Selection Grid -->
+      <div class="grid">
+        <div
+          *ngFor="let model of aiModels"
+          [class.selected]="isSelected(model.name)"
+          (click)="toggleSelection(model)"
+        >
+          <span *ngIf="isSelected(model.name)">✔</span> {{ model.name }}
+        </div>
+      </div>
+    </div>
+    <button class="rounded-full" #nextButton (click)="onNextClick()">NEXT</button>
+    <ng-template #warningModal>
+      <div class="modal" role="dialog" inert>
+        <p>Please select at least one AI model before proceeding.</p>
+        <button class="close-modal" (click)="closeModal()">OK</button>
+      </div>
+    </ng-template>
+    
+  </div>
+  

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-text',
@@ -11,9 +12,9 @@ export class TextComponent {
   prompt: string = '';
   completedText: string = '';
   apiKey: string = ''; // Replace with your OpenAI API key
+  userMessage: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
-  isDarkTheme = false;
   selectedModel = 'Select model'; // Default selection
   aiModels = ['Select model','Open AI', 'Grok 3', 'GPT-4', 'Claude 3', 'Gemini 1.5']; // Updated AI model options
   selectedModel2 = 'Select model'; // No default selection
@@ -71,7 +72,9 @@ export class TextComponent {
     
     });
   }
-  
+  goBack() {
+    this.router.navigate(['/chatselect']); // Change to your actual back route
+  }
   ccompleteText() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -93,19 +96,13 @@ export class TextComponent {
     //     console.error('API Error:', error);
     // });
   }
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    document.body.classList.toggle('dark-theme', this.isDarkTheme);
-    console.log("Theme toggled:", this.isDarkTheme);
-  }
-  signup()
-  {
-    console.log("You have successfully signed up");
-    this.router.navigate(['/signup']); // Redirect to Signup component
 
-  }
-  signin()
-  {
-    console.log("You have successfully signed in");
+  sendMessage() {
+    if (this.userMessage.trim()) {
+      console.log("User message:", this.userMessage);
+      // Add your chat submission logic here
+    } else {
+      console.warn("Message cannot be empty");
+    }
   }
 }

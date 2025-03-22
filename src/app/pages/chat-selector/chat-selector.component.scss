@@ -1,0 +1,68 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+}
+.modal-overlay {
+  pointer-events: none; /* Ensures the modal is clickable */
+}
+.modal {
+  position: fixed;
+  z-index: 1000; /* Ensure it's above other elements */
+  background-color: black; /* Solid background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Keep it on top */
+}
+/* Selected models section */
+.selected-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.selected-column {
+  background-color: #1e5b7e;
+  padding: 10px;
+  width: 48%;
+  color: white;
+  font-weight: bold;
+}
+
+.selected-item {
+  padding: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+.sub-options {
+  padding-left: 15px;
+  font-size: 14px;
+}
+
+/* Grid for unselected models */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  z-index: 10;
+}
+
+.grid div {
+  background-color: #d3d3d3;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none; /* Prevent text selection */
+  pointer-events: auto !important; /* Ensure elements are clickable */
+}
+
+.grid div.selected {
+  background-color: #1e5b7e;
+  color: white;
+  font-weight: bold;
+}

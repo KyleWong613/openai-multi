@@ -1,0 +1,80 @@
+<!-- app.component.html -->
+
+  <div class="chat-container d-none" data-chat-active="false">
+    <div class="chat-bubble d-none">
+      <div class="ai-response">
+        <h3>{{ selectedModel }}</h3>
+        <p>This is {{ selectedModel }}’s response. It provides insightful and creative text generation.</p>
+      </div>
+      <div class="ai-response">
+        <h3>{{ selectedModel2 }}</h3>
+        <p>{{ selectedModel2 }}’s response is known for its contextual understanding and nuanced replies.</p>
+      </div>
+      
+      <div class="ai-response">
+        <h3>{{ selectedModel3 }}</h3>
+        <p>{{ selectedModel3 }} delivers responses optimized for speed and accuracy.</p>
+      </div>
+    </div>
+  </div>
+
+  <label>What you want to know?</label>
+
+  <div class="search-container">
+    <div class="input-row">
+          <textarea [(ngModel)]="prompt" class="input-prompt" placeholder="Enter your text here"></textarea>
+    </div>
+
+    <div class="button-row">
+      <button class="attach-button">
+        <div class="upload-container">
+          <label for="file-upload" class="upload-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 9V15C10 16.1046 10.8954 17 12 17V17C13.1046 17 14 16.1046 14 15V7C14 4.79086 12.2091 3 10 3V3C7.79086 3 6 4.79086 6 7V15C6 18.3137 8.68629 21 12 21V21C15.3137 21 18 18.3137 18 15V8" stroke="currentColor"></path>
+            </svg>
+          </label>
+          <input type="file" id="file-upload" style="display: none;" />
+        </div>
+        
+      </button>
+      <div class="disGrok">
+      <!-- <button class="deepsearch">DeepSearch</button>
+      <button class="think">Think</button> -->
+      </div>
+
+    <!-- <select class="mode-select dropdown rounded-full" [(ngModel)]="selectedMode">
+      <option *ngFor="let mode of aiModes" [value]="mode" class="mode-text">{{ mode }}</option>
+    </select> -->
+    <!-- Dropdown 1: AI Model Selection 1-->
+    <select class="dropdown rounded-full selectedModel1 " [(ngModel)]="selectedModel">
+      <option *ngFor="let model of aiModels" [value]="model" class="option-text">{{ model }}</option>
+    </select>
+
+    <!-- Dropdown 2: AI Model Selection 2 -->
+    <select class="dropdown rounded-full selectedModel2" [(ngModel)]="selectedModel2">
+      <option *ngFor="let feature of aiModels2" [value]="feature" class="option-text">{{ feature }}</option>
+    </select>
+
+    <!-- Dropdown 3: AI Model Selection 3-->
+    <select class="dropdown rounded-full selectedModel3" [(ngModel)]="selectedModel3">
+      <option *ngFor="let theme of aiModels3" [value]="theme" class="option-text">{{ theme }}</option>
+    </select>
+
+    <div class="buttons">
+      <button class="c-button" (click)="ccompleteText()" [disabled]="!prompt || prompt.trim() === ''">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="stroke-[2] relative"><path d="M5 11L12 4M12 4L19 11M12 4V21" stroke="currentColor"></path></svg>
+      </button>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="button-container">
+    <button class="back-btn rounded-full" (click)="goBack()">BACK</button>
+    <button class="submit-btn rounded-full" [disabled]="!userMessage.trim()" (click)="sendMessage()">SUBMIT</button>
+  </div>
+  <div *ngIf="completedText" class="result">
+    <h2>Completed Text:</h2>
+    <p>{{ completedText }}</p>
+  </div>
+  
